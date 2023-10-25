@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "../Components/Auth.css";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 function Auth({ isOpen, onClose }) {
   const [activeTab, setActiveTab] = useState("signup");
-  const [username, setUsername] = useState("");
+  const [name, setname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
@@ -14,69 +15,58 @@ function Auth({ isOpen, onClose }) {
     setActiveTab(tab);
   };
 
-  const handleSignupSubmit = (e) => {
+  const handleSignupSubmit = async (e) => {
     e.preventDefault();
 
-    if (!username) {
-      toast.error("Please enter a username.");
+    if (!name || !email || !password) {
+      toast.error("Please fill in all fields.");
       return;
     }
 
-    if (!email) {
-      toast.error("Please enter an email.");
-      return;
+    try {
+      const response = await axios.post("https://talentbox-backend.onrender.com/user/register", {
+        name,
+        email,
+        password,
+      });
+
+      if (response.status === 200) {
+        toast.success("Signup successful!");
+        setname("");
+        setEmail("");
+        setPassword("");
+        onClose();
+      }
+    } catch (error) {
+      toast.error("Signup failed. Please try again.");
     }
-
-    if (!password) {
-      toast.error("Please enter a password.");
-      return;
-    }
-
-    const newUser = {
-      username,
-      email,
-      password,
-    };
-
-    localStorage.setItem("user", JSON.stringify(newUser));
-    setUsername("");
-    setEmail("");
-    setPassword("");
-    toast.success("Signup successful!");
   };
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
 
-    if (!loginEmail) {
-      toast.error("Please enter an email.");
+    if (!loginEmail || !loginPassword) {
+      toast.error("Please fill in all fields.");
       return;
     }
 
-    if (!loginPassword) {
-      toast.error("Please enter a password.");
-      return;
-    }
+    try {
+      const response = await axios.post("https://talentbox-backend.onrender.com/user/login", {
+        email: loginEmail,
+        password: loginPassword,
+      });
 
-    const storedUser = localStorage.getItem("user");
-
-    if (storedUser) {
-      const parsedUser = JSON.parse(storedUser);
-      if (
-        parsedUser.email === loginEmail &&
-        parsedUser.password === loginPassword
-      ) {
+      if (response.status === 200) {
+        console.log(response)
+        localStorage.setItem("token",response.data.token)
         toast.success("Login successful!");
-        alert("Login successful!");
-      } else {
-        toast.error("Invalid email or password.");
+        setLoginEmail("");
+        setLoginPassword("");
+        onClose();
       }
-    } else {
-      toast.error("No user found. Please sign up first.");
+    } catch (error) {
+      toast.error("Login failed. Please check your credentials.");
     }
-
-    setLoginEmail("");
-    setLoginPassword("");
   };
 
   return (
@@ -107,12 +97,12 @@ function Auth({ isOpen, onClose }) {
             <div className="signup">
               <form onSubmit={handleSignupSubmit}>
                 <div className="form-child">
-                  <label htmlFor="username">Username</label>
+                  <label htmlFor="name">name</label>
                   <input
                     type="text"
-                    placeholder="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="name"
+                    value={name}
+                    onChange={(e) => setname(e.target.value)}
                   />
                 </div>
                 <div className="form-child">
