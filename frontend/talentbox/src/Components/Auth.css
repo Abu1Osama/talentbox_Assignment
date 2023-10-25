@@ -1,12 +1,11 @@
 .Auth {
-    position: fixed;
     top: 0;
     right: 0;
     left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height:calc( 100vh - 60px);
     background-color: rgb(234, 234, 234);
     backdrop-filter: blur(45px);
     box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.5);
@@ -14,9 +13,7 @@
   }
   
   .credential-container {
-    .action {
-      padding: 5px 10px;
-    }
+   
     width: 400px;
     margin: auto;
     display: flex;
@@ -28,6 +25,9 @@
     box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.5);
     background: white;
   }
+  .action {
+    padding: 5px 10px;
+  }
   
   .tabs {
     display: flex;
@@ -37,7 +37,7 @@
     padding: 10px;
   }
   
-  button {
+  .tabs button {
     cursor: pointer;
     padding: 10px;
     width: 50%;
@@ -112,5 +112,15 @@
     color: #fff;
     text-decoration: none;
     cursor: pointer;
+  }
+ /* Auth.css */
+ .S9gUrf-YoZ4jf{ /* Example background color */
+background: red;
+display: flex;
+justify-content: center;
+align-items: center;
+  }
+  .S9gUrf-YoZ4jf button{
+    width: 100%;
   }
   

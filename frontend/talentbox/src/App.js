@@ -4,12 +4,13 @@ import Course from "./Pages/Course";
 import Navbar from "./Components/Navbar";
 import { Toaster } from "react-hot-toast";
 import Auth from "./Components/Auth";
+import AllRoute from "./Pages/AllRoute";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <Course />
+     <AllRoute/>
       <Toaster />
     </div>
   );

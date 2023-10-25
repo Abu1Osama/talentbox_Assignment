@@ -2,17 +2,29 @@ import React, { useState } from "react";
 import "../Components/Auth.css";
 import toast from "react-hot-toast";
 import axios from "axios";
+import {
+  GoogleLogin,
+  googleLogout,
+  GoogleOAuthProvider,
+} from "@react-oauth/google";
+import jwt_decode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
-function Auth({ isOpen, onClose }) {
+function Auth() {
   const [activeTab, setActiveTab] = useState("signup");
   const [name, setname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
+  };
+  const closeAuthPopup = () => {
+    console.log("Closing the popup");
+    navigate("/");
   };
 
   const handleSignupSubmit = async (e) => {
@@ -24,18 +36,21 @@ function Auth({ isOpen, onClose }) {
     }
 
     try {
-      const response = await axios.post("https://talentbox-backend.onrender.com/user/register", {
-        name,
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://talentbox-backend.onrender.com/user/register",
+        {
+          name,
+          email,
+          password,
+        }
+      );
 
       if (response.status === 200) {
         toast.success("Signup successful!");
+
         setname("");
         setEmail("");
         setPassword("");
-        onClose();
       }
     } catch (error) {
       toast.error("Signup failed. Please try again.");
@@ -51,18 +66,21 @@ function Auth({ isOpen, onClose }) {
     }
 
     try {
-      const response = await axios.post("https://talentbox-backend.onrender.com/user/login", {
-        email: loginEmail,
-        password: loginPassword,
-      });
+      const response = await axios.post(
+        "https://talentbox-backend.onrender.com/user/login",
+        {
+          email: loginEmail,
+          password: loginPassword,
+        }
+      );
 
       if (response.status === 200) {
-        console.log(response)
-        localStorage.setItem("token",response.data.token)
+        console.log(response);
+        localStorage.setItem("token", response.data.token);
         toast.success("Login successful!");
+        navigate("/course");
         setLoginEmail("");
         setLoginPassword("");
-        onClose();
       }
     } catch (error) {
       toast.error("Login failed. Please check your credentials.");
@@ -70,9 +88,9 @@ function Auth({ isOpen, onClose }) {
   };
 
   return (
-    <div className={`Auth ${isOpen ? "open" : ""}`} id="Auth">
+    <div className={`Auth }`} id="Auth">
       <div className="credential-container">
-        <p onClick={onClose} style={{ color: "black" }}>
+        <p onClick={closeAuthPopup} style={{ color: "black" }}>
           x
         </p>
         <div className="action">
@@ -152,6 +170,25 @@ function Auth({ isOpen, onClose }) {
                 <button className="submit" type="submit">
                   Login
                 </button>
+                <GoogleOAuthProvider clientId="438821170716-mqbe0gkd64cboutfhtoo3dr06s3cin4g.apps.googleusercontent.com">
+                  <GoogleLogin
+                    id="google-login-button"
+                    onSuccess={(credentialResponse) => {
+                      console.log(credentialResponse);
+                      const details = jwt_decode(credentialResponse.credential);
+                      console.log(details);
+                      localStorage.setItem(
+                        "token",
+                        credentialResponse.credential
+                      );
+                      localStorage.setItem("pictures", details.picture);
+                      navigate("/course");
+                    }}
+                    onError={() => {
+                      console.log("Login Failed");
+                    }}
+                  />
+                </GoogleOAuthProvider>
               </form>
             </div>
           )}

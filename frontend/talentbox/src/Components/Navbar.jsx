@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import "../Components/Navbar.css";
 import Auth from "./Auth";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
-    const [isAuthPopupOpen, setIsAuthPopupOpen] = useState(false);
+  const token = localStorage.getItem("token");
+  const pictures = localStorage.getItem("pictures");
+  const navigate = useNavigate();
 
-    const handleSignInClick = () => {
-      setIsAuthPopupOpen(true);
-    };
-  
-    const closeAuthPopup = () => {
-        console.log("Closing the popup");
-      setIsAuthPopupOpen(false);
-    };
+  const handleSignInClick = () => {
+    navigate("/login");
+  };
+
+  const handlelogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
+
   return (
     <div id="nav">
       <div className="nav-input">
@@ -23,8 +27,11 @@ function Navbar() {
       </div>
       <div className="nav-user">
         <button>Menu</button>
-        <button onClick={handleSignInClick}>Sign in</button>
-        <Auth isOpen={isAuthPopupOpen} onClose={closeAuthPopup} />
+        {token ? (
+          <img onClick={handlelogout} src={pictures} alt="" />
+        ) : (
+          <button onClick={handleSignInClick}>Sign in</button>
+        )}
       </div>
     </div>
   );
