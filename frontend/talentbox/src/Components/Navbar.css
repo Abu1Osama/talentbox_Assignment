@@ -1,0 +1,33 @@
+#nav{
+    background: #000;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+}
+.nav-input{
+}
+.nav-input input{
+    padding: 8px;
+    width: 100%;
+  
+}
+.nav-user{
+    display: flex;
+    gap: 10px;
+}
+.nav-user button:nth-child(1){
+    padding: 8px 10px;
+    border: 1px solid white;
+    background: black;
+    color: white;
+
+}
+.nav-user button:nth-child(2){
+    padding: 8px 10px;
+    border: 1px solid rgb(248, 116, 22);
+    background: tomato;
+    color: black;
+
+}
