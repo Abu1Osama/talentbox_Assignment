@@ -2,9 +2,7 @@
   position: relative;
 }
 .home-main {
-  width: 40%;
   margin: auto;
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -16,11 +14,15 @@
 }
 .list {
   display: grid;
-  gap: 25px;
+  gap: 40px;
+  font-size: 24px;
+  margin-top: 90px;
+  margin-bottom: 24px;
 }
 .icon {
   display: flex;
   gap: 15px;
+  justify-content: space-between;
 }
 img {
   height: 20px;
@@ -36,18 +38,28 @@ span {
   padding: 10px 20px;
   width: 60%;
   margin: auto;
-  background: rgb(252, 183, 79);
-  border: rgb(252, 183, 79);
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  border: 3px solid #feac32;
   color: black;
   cursor: pointer;
   border-radius: 4px;
   margin-top: 30px;
+  font-size: 28px;
 }
 .para {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  font-size: 27px;
+}
+.para span {
+  font-size: 34px;
+  color: #3b3b4f;
 }
 .home-btn {
   display: flex;
+}
+.fa-amazon {
+  transform: translate(10px, 7px);
+  font-size: 40px;
 }

@@ -18,8 +18,9 @@ function Home() {
           </div>
           <div className="icon">
             <span>
-              <i class="fa-brands fa-apple"></i>Google
+              <i class="fa-brands fa-apple"></i>
             </span>
+            <span>Google</span>
             <span>
               <i class="fa-brands fa-microsoft"></i>Microsoft
             </span>
@@ -27,7 +28,7 @@ function Home() {
               <i class="fa-brands fa-spotify"></i>Spotify
             </span>
             <span>
-              <i class="fa-brands fa-amazon"></i>amazon.com
+              <i class="fa-brands fa-amazon"></i>mazon.com
             </span>
           </div>
         </div>

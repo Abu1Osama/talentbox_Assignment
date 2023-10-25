@@ -10,7 +10,7 @@ import {
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
-function Auth() {
+function Auth({setuserpic}) {
   const [activeTab, setActiveTab] = useState("signup");
   const [name, setname] = useState("");
   const [email, setEmail] = useState("");
@@ -75,12 +75,21 @@ function Auth() {
       );
 
       if (response.status === 200) {
+        let pic = localStorage.getItem("pictures") 
+        if (pic) {
+          
+          setuserpic(pic);
+        }
+        else{
+
+          setuserpic(false);
+        }
         console.log(response);
         localStorage.setItem("token", response.data.token);
         toast.success("Login successful!");
         navigate("/course");
         setLoginEmail("");
-        setLoginPassword("");
+        setLoginPassword("")
       }
     } catch (error) {
       toast.error("Login failed. Please check your credentials.");
@@ -88,11 +97,9 @@ function Auth() {
   };
 
   return (
-    <div className={`Auth }`} id="Auth">
+    <div className='Auth' id="Auth">
       <div className="credential-container">
-        <p onClick={closeAuthPopup} style={{ color: "black" }}>
-          x
-        </p>
+
         <div className="action">
           {activeTab === "signup" ? <h3>Signup</h3> : <h3>Login</h3>}
         </div>
@@ -193,6 +200,9 @@ function Auth() {
             </div>
           )}
         </div>
+        <button className="cancel-btn" onClick={closeAuthPopup}>
+          Cancel
+        </button>
       </div>
     </div>
   );

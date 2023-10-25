@@ -2,6 +2,17 @@ import React, { useEffect, useState } from "react";
 import "../Pages/Course.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { FaReact , FaJsSquare,FaDatabase } from "react-icons/fa";
+
+const iconobj = {
+  "1" : <FaReact/>,
+  "2" : <FaJsSquare/>,
+  "3" : <FaReact/>,
+  "4" : <FaReact/>,
+  "5" : <FaDatabase/>,
+  "6" : <FaReact/>,
+  "7" : <FaReact/>,
+}
 
 function Course() {
   const [courses, setCourses] = useState([]);
@@ -34,17 +45,13 @@ function Course() {
         -Thomas A. Edition
       </div>
       <div className="content">
-        {courses.map((item) => (
+        {courses.map((item , i) => (
           <div className="listing">
-            <div className="logo">
-              <i class="fa-brands fa-square-js"></i>
-            </div>
-            <div className="content">
-              <p>
+              {iconobj[item.icon_id]}
+              <p className="course-content">
                 {item.course}
                 {item.duration}
               </p>
-            </div>
           </div>
         ))}
       </div>

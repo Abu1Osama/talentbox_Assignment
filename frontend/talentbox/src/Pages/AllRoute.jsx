@@ -4,14 +4,14 @@ import Auth from "../Components/Auth";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Home";
 
-function AllRoute() {
+function AllRoute({ setuserpic }) {
   const token = localStorage.getItem("token");
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/course" element={ <Course /> } />
-        <Route path="/login" element={<Auth />} />
+        <Route path="/course" element={<Course />} />
+        <Route path="/login" element={<Auth setuserpic={setuserpic} />} />
       </Routes>
     </>
   );

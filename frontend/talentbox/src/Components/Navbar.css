@@ -1,38 +1,86 @@
-#nav{
-    background: #000;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 10px;
+#nav {
+  background-color: #1b1b32;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
 }
-.nav-input{
+.nav-input {
+  flex-grow: 1;
+  max-width: 620px;
+  display: flex;
+  position: relative;
 }
-.nav-input input{
-    padding: 8px;
-    width: 100%;
-  
+.nav-input input {
+  width: 100%;
+  background: #3b3b4f;
+  border: none;
+  border-radius: 0px;
+  font-size: 20px;
+  color: white;
+  padding-left: 42px;
 }
-.nav-user{
-    display: flex;
-    gap: 10px;
-    align-items: center;
+.nav-input input:focus {
+  outline: 3px solid #198eee;
 }
-.nav-user img{
-    border-radius: 50%;
-    width: 100%;
+.nav-input button {
+  position: absolute;
+  background: #3b3b4f;
+  border: none;
+  top: 0;
+  left: 2px;
+  width: 40px;
+  height: 100%;
+  font-size: 20px;
+  padding-top: 6px;
+  color: #d0d0d5;
+  cursor: pointer;
 }
-.nav-user button:nth-child(1){
-    padding: 8px 10px;
-    border: 1px solid white;
-    background: black;
-    color: white;
+.nav-input input::placeholder {
+  color: #d0d0d5;
+}
+.nav-user {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-grow: 1;
+  max-width: 620px;
+  justify-content: right;
+}
+.nav-user img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border: 2px solid white;
+}
+.nav-user button:nth-child(1),
+.nav-user button:nth-child(2) {
+  padding: 10px 16px;
+  border: 1px solid white;
+  background: transparent;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  background: #1b1b32;
+}
+.nav-user button:nth-child(2) {
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  border: 2px solid #feac32;
+  color: black;
+}
+.nav-logo a {
+  color: white;
+  text-decoration: none;
+}
+.nav-logo {
+  font-size: 32px;
+  letter-spacing: 3px;
+  color: white;
+}
 
-}
-.nav-user button:nth-child(2){
-    padding: 8px 10px;
-    border: 1px solid rgb(252, 183, 79);
-    background:   rgb(252, 183, 79);
-    color: black;
-
+.nav-logo i {
+  font-weight: 400;
+  margin: 0 5px;
+  vertical-align: middle;
 }

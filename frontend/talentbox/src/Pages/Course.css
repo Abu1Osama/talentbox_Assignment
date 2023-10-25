@@ -1,24 +1,44 @@
 #course {
   display: grid;
-  justify-content: center;
   align-items: center;
-  width: 400px;
   margin: auto;
 }
 .listing {
-  width: 400px;
-  border: 1px solid;
-  margin-top: 5px;
+  width: 100%;
+  max-width: 760px;
+  border: 3px solid;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 15px;
+  gap: 15px;
+  padding: 18px 20px;
+  background: #d0d0d5;
+  font-size: 20px;
 }
-.logo {
-  border: 1px solid;
-  padding: 10px;
+.listing:hover {
+  background-color: #1b1b32;
+  color: #f5f6f7;
+}
+
+.listing svg {
+  font-size: 50px;
 }
 .description {
-  padding: 10px;
   text-align: center;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.heading {
+  text-align: center;
+  margin: 40px 0 50px;
+  font-size: 28px;
+  font-family: "Sometype Mono", monospace;
+  font-family: "Poppins", sans-serif;
 }
