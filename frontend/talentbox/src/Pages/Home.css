@@ -1,5 +1,6 @@
 #home {
   position: relative;
+  min-height: calc(100vh - 73px);
   
 }
 .home-main {
@@ -17,7 +18,7 @@
 .list {
   display: grid;
   gap: 40px;
-  font-size: 24px;
+  font-size: 20px;
   margin-top: 90px;
   margin-bottom: 24px;
 }
@@ -52,7 +53,7 @@ span {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  font-size: 27px;
+  font-size: 20px;
 }
 .para span {
   font-size: 34px;
