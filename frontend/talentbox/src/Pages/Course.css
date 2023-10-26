@@ -2,6 +2,7 @@
   display: grid;
   align-items: center;
   margin: auto;
+  background: #f5f6f7;
 }
 .listing {
   width: 100%;
@@ -41,4 +42,17 @@
   font-size: 28px;
   font-family: "Sometype Mono", monospace;
   font-family: "Poppins", sans-serif;
+}
+
+
+@media only screen and (max-width: 600px) {
+  #course{
+    padding: 14px;
+}
+  .heading{
+    font-size: 14px;
+}
+.description{
+    font-size: 14px;
+}
 }

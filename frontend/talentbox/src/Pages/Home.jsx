@@ -22,10 +22,10 @@ function Home() {
             </span>
             <span>Google</span>
             <span>
-              <i class="fa-brands fa-microsoft"></i>Microsoft
+              <i class="fa-brands fa-spotify"></i>Spotify
             </span>
             <span>
-              <i class="fa-brands fa-spotify"></i>Spotify
+              <i class="fa-brands fa-microsoft"></i>Microsoft
             </span>
             <span>
               <i class="fa-brands fa-amazon"></i>mazon.com

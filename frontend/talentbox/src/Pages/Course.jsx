@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import "../Pages/Course.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { FaReact , FaJsSquare,FaDatabase } from "react-icons/fa";
+import { FaReact , FaDesktop,FaJsSquare,FaDatabase,FaTrafficLight,FaClipboardList } from "react-icons/fa";
+
 
 const iconobj = {
-  "1" : <FaReact/>,
-  "2" : <FaJsSquare/>,
-  "3" : <FaReact/>,
+  "1" : <FaDesktop/>,
+  "2" : <FaDesktop/>,
+  "3" : <FaJsSquare/>,
   "4" : <FaReact/>,
   "5" : <FaDatabase/>,
-  "6" : <FaReact/>,
-  "7" : <FaReact/>,
+  "6" : <FaTrafficLight/>,
+  "7" : <FaClipboardList/>,
 }
 
 function Course() {
