@@ -58,9 +58,11 @@ npm start
 - React.js
 - css
 - Axios
-- nodejs
-- Express js
+- node-js
+- Express-js
 - mongoDb
+- Render
+- vercel
 
 ## Usage
 
